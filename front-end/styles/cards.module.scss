@@ -1,0 +1,53 @@
+@use './base-colors';
+@use './base-fonts';
+
+.cardBox{
+    box-sizing: border-box;
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: left;
+    box-shadow: 1px 1px 10px rgb(132, 133, 135);
+    border: solid rgba(3, 133, 255, 0) 2px;
+    border-radius: 10px;
+    background-color: base-colors.$card-background-color;
+    margin-top: 30px;
+    margin-left: 1rem;
+    padding-left: 1rem;
+} 
+
+.card_buttons {
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.card_button {
+    font-size: base-fonts.$main-font-size;
+    padding: .5rem 1rem;
+  }
+
+  .card_item {
+      margin-bottom: .5rem;
+  }
+
+  .card_title {
+      text-align: center;
+  }
+
+  .card_label{
+    display: inline-block;
+    width: 110px;
+  }
+
+  .card_error {
+      color: base-colors.$card-error-color;
+  }
+
+  .card_message {
+      color: base-colors.$card-message-color;
+  }

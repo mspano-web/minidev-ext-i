@@ -1,0 +1,23 @@
+.dashboard{
+    display:grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 55% 45%;
+    grid-template-areas: "graph1 graph2" "table1 table2";
+    grid-gap: 3px;
+}
+
+.graph1{
+    grid-area: graph1;
+}
+
+.graph2{
+    grid-area: graph2;
+}
+
+.table1{
+    grid-area: table1;
+}
+
+.table2{
+    grid-area: table2;
+}

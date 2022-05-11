@@ -1,0 +1,23 @@
+@use './base-colors';
+@use './base-fonts';
+
+.navigationbar{
+    display:flex;
+    justify-content: left;
+    background-color: base-colors.$main-color-75 ;
+    height: 2.5rem;  
+    font: base-fonts.$main-font;
+    font-size: base-fonts.$main-font-size; 
+}
+
+.button{
+    background-color: base-colors.$link-color ;
+    color: base-colors.$grayscale-ligth-color;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-left: .2rem;
+
+    :hover {
+        color: base-colors.$item-selected-color;
+    }
+}

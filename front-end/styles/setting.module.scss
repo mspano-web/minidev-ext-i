@@ -1,0 +1,10 @@
+@use './base-colors';
+
+
+.setting {
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, 300px);
+}
+

@@ -1,0 +1,90 @@
+@use './base-colors';
+@use './base-fonts';
+
+.tables {
+    font-family: base-fonts.$main-font-family;
+    border-collapse: collapse;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    width: 90%;
+
+    thead {
+      background-color: #545655;
+      color: white;
+    }
+
+    td,  th {
+      border: 1px solid #ddd;
+      padding: 8px;
+      align-self: center;
+    }
+
+    th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      color: white;
+    }
+
+    tr:nth-child(even){background-color: #d3d1d1;}
+  
+    tr:hover {
+      background-color: base-colors.$table-row-hover;
+      color: base-colors.$grayscale-ligth-color; 
+    }
+
+  }
+
+  .title {
+    padding-left: 2rem;
+  }
+
+  .especial {
+    overflow-y:auto;
+    max-height: 250px;
+  }
+
+
+  .table_align_center {
+    text-align: center;
+  }
+
+  .table_buttons{
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .table_actions{
+    width: 90px;
+  }
+
+  .table_awesome{
+    font-size: 2rem;
+  }
+
+.table_header{
+  display:flex;
+  justify-content: space-between;
+  margin-right: 5rem;
+}
+
+.table_item_selected {
+  color: base-colors.$item-selected-color;
+}
+
+.button {
+  margin-left: .5rem;
+}
+
+.table_message {
+  margin-top: 8rem;
+  margin-left: 1rem;
+  color: base-colors.$table-message-color;
+  text-align: center;
+  font-weight: bold;
+}
+
+.table_amount{
+  text-align: right;
+}
+

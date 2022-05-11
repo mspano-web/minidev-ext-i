@@ -1,0 +1,22 @@
+@use './base-colors';
+@use './base-fonts';
+
+.mainbar{
+    display:flex;
+    background-color: base-colors.$main-color;
+    height: 3rem;  
+    justify-content: space-between;
+    align-items: center;
+    font: base-fonts.$main-font;
+    font-size: 1.5rem; 
+}
+
+.logo {
+    padding-left: 1rem;
+    text-align: left;
+}
+
+.title {
+    padding-right: 1rem;
+}
+

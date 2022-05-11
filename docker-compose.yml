@@ -1,0 +1,67 @@
+version: "3.7"
+
+services:
+  back-end:
+    container_name: minidev-ext-i-bk
+    build: ./back-end
+    image: didevwebms/minidev_ext_1_bk:latest
+    ports:
+      - "4000:4000"
+    working_dir: /usr/minidev-ext-i-bk
+    volumes:
+      - ./back-end:/usr/minidev-ext-i-bk
+    environment:
+      DB_HOST:  postgres
+    depends_on:
+      - postgres
+      - redis
+  postgres:
+    container_name: postgres
+    image: postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./db/data/postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: penn-minidev-ts-graphql
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+  redis:
+    container_name: redis
+    image: redis
+    hostname: redis
+    ports:
+      - '6379:6379'
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment: 
+          PGADMIN_DEFAULT_EMAIL: "admin@admin.com"
+          PGADMIN_DEFAULT_PASSWORD: "root"
+          PGADMIN_LISTEN_PORT: 5050
+    ports: 
+      - "5050:5050"
+    depends_on:
+      - postgres
+  redis-commander:
+    container_name: redis-commander
+    hostname: redis-commander
+    image: rediscommander/redis-commander:latest
+    restart: always
+    environment:
+    - REDIS_HOSTS=local:redis:6379
+    ports:
+    - "8081:8081"
+    depends_on:
+      - redis
+  front-end:
+    container_name: minidev-ext-i-fr
+    build: ./front-end
+    image: didevwebms/minidev_ext_1_fr:latest
+    working_dir: /usr/minidev-ext-i-fr
+    volumes:
+      - ./front-end:/usr/minidev-ext-i-fr
+    ports:
+      - "3000:3000"
+    depends_on:
+      - back-end

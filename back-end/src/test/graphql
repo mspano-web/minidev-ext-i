@@ -1,0 +1,321 @@
+// Apollo Client
+// https://studio.apollographql.com/sandbox/explorer
+// http://localhost:4000/graphql
+
+// -------------------------------------------------.
+// RetailOutlets
+
+// Query
+
+{
+RetailOutlets {
+  id,
+  name,
+  adress,
+  phoneNumber,
+  createdAt
+} 
+}
+
+// Create
+
+mutation  {
+  createRetailOutlets(
+    data: 
+      { name: "Dynamic", 
+        adress: "1492 NW 14th Street, - Miami",
+        phoneNumber: "(786) 555-1234"
+      }
+  ) {
+      status,
+      id,
+      message
+  }
+}
+
+// Others - replace Data
+
+      { name: "Center", 
+        adress: "7051 Biscayne Blvd - Miami",
+        phoneNumber: "(786) 532-1782"
+      }
+
+      { name: "The goddess", 
+        adress: "21301 NW 2nd Ave - Miami",
+        phoneNumber: "(786) 456-4452"
+      }
+
+      { name: "Elastic", 
+        adress: "256 S Orange Ave #1305 - Orlando",
+        phoneNumber: "(407) 896-7891"
+      }
+
+      { name: "Modern", 
+        adress: "601 S Central Ave - Atlanta",
+        phoneNumber: "(470) 655-1894"
+      }
+
+// Delete
+
+mutation {
+  deleteRetailOutlets(id:1)
+  {
+      status,
+      message
+  }
+}
+
+// Update
+
+mutation {
+  updateRetailOutlets (
+    id: 3,
+    fields: {
+      name: "The goddess",
+      adress: "21302 NW 2nd Ave - Miami",
+      phoneNumber: "(786) 456-4453"
+    }
+  )
+  {
+      status,
+      message
+  }
+}
+
+// --------------------------------------------
+// SalesPeople
+
+// Query
+{
+salesPeople {
+  id,
+  name,
+  createdAt,
+  retailOutlet_id {
+    id,
+    name
+  }    
+} 
+}
+
+// Created
+
+mutation  {
+  createSalesPeople(
+    data: 
+      { name: "Emma Johnson",
+        retailOutlet_id: 1
+      }
+  )  {
+      status,
+      id,
+      message
+  }
+}
+
+// Others - replace Data
+
+      { name: "Sophia Smith",
+        retailOutlet_id: 2
+      }
+
+      { name: "Mia Miller",
+        retailOutlet_id: 3
+      }
+
+      { name: "Jessia  Taylor",
+        retailOutlet_id: 4
+      }
+
+      { name: "Emily Jones",
+        retailOutlet_id: 1
+      }
+
+      { name: "Elizabeth Martinez",
+        retailOutlet_id: 3
+      }
+
+      { name: "Madison Rodriguez",
+        retailOutlet_id: 3
+      }
+
+      { name: "Isabella Garcia",
+        retailOutlet_id: 3
+      }
+
+      { name: "Abigail Davis",
+        retailOutlet_id: 3
+      }
+
+      { name: "Ava Brown",
+        retailOutlet_id: 1
+      }
+
+      { name: "Olivia Williams",
+        retailOutlet_id: 1
+      }
+
+      { name: "Isla Moore",
+        retailOutlet_id: 4
+      }
+
+      { name: "Charlotte Lee",
+        retailOutlet_id: 2
+      }
+
+      { name: "Ruby Thompson",
+        retailOutlet_id: 2
+      }
+
+// Delete
+
+mutation {
+  deleteSalesPeople(id:9)
+  {
+      status,
+      message
+  }
+}
+
+// Update
+
+mutation {
+  updateSalesPeople (
+    id: 1,
+    fields: {
+      name: "Vendedor N"
+    }
+  ) 
+  {
+    status,
+    message
+  }
+}
+
+
+// --------------------------------------------
+// Sales
+
+// Query
+
+{
+Sales {
+  id,
+  details,
+  amount,
+  createdAt,
+  retailOutlet_id {
+    id,
+    name,
+    adress,
+    phoneNumber
+  },
+  salesPeople_id {
+    id,
+    name
+  }
+} 
+}
+
+// Create
+
+mutation  {
+  createSales(
+    data: 
+      { 
+        details: "ROPA",
+        amount: 1000,    
+        retailOutlet_id: 1,
+        salesPeople_id: 8
+      }
+  ) {
+      status,
+      id,
+      message
+  }
+}
+
+//Delete
+
+mutation {
+  deleteSales(id:4)
+    {
+      status,
+      message
+  }
+}
+
+// Update
+
+mutation {
+  updateSales (
+    id: 1,
+    fields: {
+      details: "Cambio Ropa",
+      amount: 200   
+    }
+  )
+  {
+      status,
+      message
+  }
+}
+
+// -------------------------------------------------.
+// Reports
+// Report: salesByRetailOutletYearMonthOutputDTO
+
+// Query Postgres
+SELECT "retailOutlet_id", 
+	date_part('year', sales."createdAt") AS txn_year,
+	date_part('month', sales."createdAt") AS txn_month,
+	"name",
+	COUNT(*) as "Count Sales",
+	SUM(amount) as "Amount Sales"
+	FROM public.sales as sales
+	LEFT JOIN retail_outlets
+	ON "retailOutlet_id" = retail_outlets.id
+	WHERE date_part('year', sales."createdAt")  = 2022
+	AND date_part('month', sales."createdAt")= 5
+    group by 1,2,3,4
+	order by 1,2,3,4
+
+  // Query GraphQL
+  {
+    salesByRetailOutletYearMonth(year: "2022")
+    {retailOutlet_id, 
+     txn_year, 
+     txn_month,
+     name,
+     count,
+     amount
+    }
+   }
+
+    // Report: salesBySalesPersonYear
+
+// Query Postgres
+   SELECT "salesPeople_id", 
+    date_part('year', sales."createdAt") AS txn_year,
+    "name",
+    SUM(amount) as "Amount Sales"
+    FROM public.sales as sales
+    INNER JOIN sales_people
+    ON "salesPeople_id" = sales_people.id
+    WHERE date_part('year', sales."createdAt")  = 2022
+      group by 1,2,3
+    order by "Amount Sales" desc
+  
+  // Query GraphQL
+  {
+    salesBySalesPersonYear
+    (year: "2022")
+    {salesPeople_id, 
+     txn_year, 
+     name
+     amount
+    }
+    }
+
+
+
