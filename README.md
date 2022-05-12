@@ -23,10 +23,9 @@ ___
 * TypeORM
 * GraphQL (Apollo Server-Client / TypegraphQL)
 * HTTPS / OpenSSL
-* Redis
-* Redis-commander
+* Redis / Redis-commander
 * NextJS
 * Chart.js
-* Docker / Docker-Compose
+* Docker / Docker-Compose / DockerHub
 ___
 
