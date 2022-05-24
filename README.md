@@ -31,8 +31,8 @@ ___
 
 ## Información del proyecto / Project information
 
-* Developer Web MS - [Youtube channel([https://www.youtube.com/playlist?list=PLWnRJL1SdIiogd05dz8OLTEmFQNLMSfm2](https://www.youtube.com/playlist?list=PLWnRJL1SdIirgRiEgEV0aHNpencFQqppu) - (YOUTUBE)
-* Developer Web MS - [Contenido - Español(https://drive.google.com/file/d/1UUEgdgaYiOm3kj0dOqEVBLXB0qE9-4Y_/view?usp=sharing) / [Content - English](https://drive.google.com/file/d/1Z91YXfbAz_5OkcNFkD31wHV1ytbcgtCM/view?usp=sharing) - (PDF) 
+* Developer Web MS - [Youtube channel(https://www.youtube.com/playlist?list=PLWnRJL1SdIiogd05dz8OLTEmFQNLMSfm2](https://www.youtube.com/playlist?list=PLWnRJL1SdIirgRiEgEV0aHNpencFQqppu) - (YOUTUBE)
+* Developer Web MS - [Contenido - Español](https://drive.google.com/file/d/1UUEgdgaYiOm3kj0dOqEVBLXB0qE9-4Y_/view?usp=sharing) / [Content - English](https://drive.google.com/file/d/1Z91YXfbAz_5OkcNFkD31wHV1ytbcgtCM/view?usp=sharing) - (PDF) 
 
 ___
 
