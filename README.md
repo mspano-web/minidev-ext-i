@@ -6,7 +6,7 @@ Consiste en un mini desarrollo que tiene como alcance la implementacion de un "P
 
 ___
 
-This initiative is an extension of the "MiniDev" initiative, which call can be found published on the YouTube channel [Developer Web MS](https://www.youtube.com/playlist?list=PLWnRJL1SdIiogd05dz8OLTEmFQNLMSfm2), and is complemented with the repositories [minidev-mern-front-end](https://github.com/mspano-web/minidev-mern-front-end) and [minidev-mern-back-end](https://github. com/mspano-web/minidev-mern-back-end).
+This initiative is an extension of the "MiniDev" initiative, which call can be found published on the YouTube channel [Developer Web MS](https://www.youtube.com/playlist?list=PLWnRJL1SdIiogd05dz8OLTEmFQNLMSfm2), and is complemented with the repositories [minidev-mern-front-end](https://github.com/mspano-web/minidev-mern-front-end) and [minidev-mern-back-end](https://github.com/mspano-web/minidev-mern-back-end).
 
 It consists of a mini development whose scope is the implementation of a "Sales Administration Panel". You can find its explanation in its corresponding [playlist on youtube](https://www.youtube.com/playlist?list=PLWnRJL1SdIirgRiEgEV0aHNpencFQqppu).
 ___
