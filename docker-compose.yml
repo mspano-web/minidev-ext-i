@@ -15,23 +15,31 @@ services:
     depends_on:
       - postgres
       - redis
+    networks:
+      - back-end
   postgres:
     container_name: postgres
     image: postgres
     ports:
       - "5433:5432"
     volumes:
-      - ./db/data/postgres:/var/lib/postgresql/data
+      - vol_data:/usr/minidev-ext-i-bk/data
     environment:
       POSTGRES_DB: penn-minidev-ts-graphql
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: root
+    networks:
+      - back-end
   redis:
     container_name: redis
     image: redis
     hostname: redis
     ports:
       - '6379:6379'
+    networks:
+      - back-end
+    volumes:
+      - vol_data:/usr/minidev-ext-i-bk/redis
   pgadmin:
     container_name: pgadmin
     image: dpage/pgadmin4
@@ -43,6 +51,10 @@ services:
       - "5050:5050"
     depends_on:
       - postgres
+    networks:
+      - back-end
+    volumes:
+      - vol_data:/usr/minidev-ext-i-bk/pgadmin
   redis-commander:
     container_name: redis-commander
     hostname: redis-commander
@@ -54,14 +66,15 @@ services:
     - "8081:8081"
     depends_on:
       - redis
-  front-end:
-    container_name: minidev-ext-i-fr
-    build: ./front-end
-    image: didevwebms/minidev_ext_1_fr:latest
-    working_dir: /usr/minidev-ext-i-fr
-    volumes:
-      - ./front-end:/usr/minidev-ext-i-fr
-    ports:
-      - "3000:3000"
-    depends_on:
+    networks:
       - back-end
+    volumes:
+      - vol_data:/usr/minidev-ext-i-bk/redis-commander
+volumes:
+  vol_data:
+#    external: true    # Create with:  docker volume create
+networks:
+  back-end:
+    driver: bridge
+#    external:         # Create with:  docker network create
+#        name: i-already-created-this
